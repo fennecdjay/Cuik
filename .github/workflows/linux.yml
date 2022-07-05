@@ -13,6 +13,9 @@ jobs:
 
     steps:
 
+    - name: Checkout
+      uses: actions/checkout@v2
+
     - name: Dependencies
       if: "${{ matrix.cc == 'clang-15' }}"
       run: |
@@ -20,9 +23,7 @@ jobs:
         sudo add-apt-repository "deb http://apt.llvm.org/focal/ llvm-toolchain-focal main"
         sudo apt-get update
         sudo apt-get install -y clang-15 llvm-15 llvm-15-dev lld-15 liblld-15-dev
-
-    - name: Checkout
-      uses: actions/checkout@v2
+        cp /usr/bin/llvm-ar-15 bin
 
     - name: Build
       run: ${{ matrix.cc }} -Wall -Wextra compile.c
