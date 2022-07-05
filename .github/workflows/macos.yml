@@ -14,7 +14,7 @@ jobs:
     steps:
 
     - name: Dependencies
-      if: "${{ matrix.cc }} == clang"
+      if: "${{ matrix.cc }} == 'clang'"
       run: brew install llvm
 
     - name: Checkout
