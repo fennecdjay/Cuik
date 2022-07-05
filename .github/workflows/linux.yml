@@ -14,7 +14,7 @@ jobs:
     steps:
     - name: Dependencies
       if: "${{ matrix.cc }} == clang"
-      run: apt-get install llvm
+      run: sudo apt-get install llvm
 
     - name: Checkout
       uses: actions/checkout@v2
